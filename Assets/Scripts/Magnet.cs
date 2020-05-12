@@ -17,6 +17,8 @@ public class Magnet : MonoBehaviour
     private bool isActive;
     private GameObject[] magnets;
 
+    public GameObject activeBall { set; get; }
+
     void Start()
     {
         magnets = GameObject.FindGameObjectsWithTag("Magnet");
@@ -25,7 +27,7 @@ public class Magnet : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (isActive) Ball.instance.gameObject.GetComponent<Rigidbody2D>().MovePosition(Vector3.MoveTowards(Ball.instance.gameObject.transform.position, transform.position, this.speed * Time.deltaTime));
+        if (isActive) activeBall.GetComponent<Rigidbody2D>().MovePosition(Vector3.MoveTowards(activeBall.transform.position, transform.position, this.speed * Time.deltaTime));
     }
 
     public void Hit()

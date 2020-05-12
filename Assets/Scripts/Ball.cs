@@ -4,18 +4,14 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    public static Ball instance;
 
-    private void Awake()
+    public void UpdateActiveBall()
     {
-        if (instance == null)
-        {
-            instance = this;
-        } else
-        {
-            Destroy(gameObject);
-        }
+        GameManager.instance.UpdateActiveBall(gameObject);
+    }
 
-        DontDestroyOnLoad(this.gameObject);
+    public void Socketed()
+    {
+        GetComponent<Rigidbody2D>().gravityScale = 0;
     }
 }
