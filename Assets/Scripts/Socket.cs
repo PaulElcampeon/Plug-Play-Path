@@ -46,11 +46,14 @@ public class Socket : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!isOccupied && other.gameObject.tag == "Ball")
+        if (isOccupied) return;
+
+        if (!isTriggered && other.gameObject.tag == "Ball")
         {
+            isTriggered = true;
             ball = other.gameObject;
             ball.GetComponent<Ball>().isGoingIntoSocket = true;
-            isTriggered = true;
+            if (ball.GetComponent<Ball>().colour != givenColour) ball.GetComponent<CircleCollider2D>().enabled = false;
         }
     }
 }
