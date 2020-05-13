@@ -9,6 +9,10 @@ public class Socket : MonoBehaviour
     [SerializeField]
     public float speed;
 
+    [Header("Attributes")]
+    [SerializeField]
+    private string givenColour;
+
     private bool isTriggered;
     private bool isOccupied;
 
@@ -16,7 +20,23 @@ public class Socket : MonoBehaviour
 
     private void Update()
     {
-        if (ball.transform.position == transform.position) isOccupied = true;
+        if (!isTriggered) return;
+
+        if (Vector2.Distance(ball.transform.position, transform.position) < 0.01)
+        {
+            ball.GetComponent<Ball>().Socketed();
+
+            if (givenColour == ball.GetComponent<Ball>().colour)
+            {
+                isOccupied = true;
+            }
+            else
+            {
+                isTriggered = false;
+
+                ball.GetComponent<Ball>().Dissapear();
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -29,6 +49,7 @@ public class Socket : MonoBehaviour
         if (!isOccupied && other.gameObject.tag == "Ball")
         {
             ball = other.gameObject;
+            ball.GetComponent<Ball>().isGoingIntoSocket = true;
             isTriggered = true;
         }
     }

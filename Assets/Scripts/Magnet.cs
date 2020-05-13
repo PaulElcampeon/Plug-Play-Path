@@ -5,29 +5,41 @@ using UnityEngine.UI;
 
 public class Magnet : MonoBehaviour
 {
-
-    [Header("Magnet Button")]
-    [SerializeField]
-    private Button magnetSwitch;
-
     [Header("Magnet Strength")]
     [SerializeField]
     public float speed;
 
     private bool isActive;
     private GameObject[] magnets;
-
-    public GameObject activeBall { set; get; }
+    private GameObject[] balls;
+    private CircleCollider2D collider;
+    private SpriteRenderer spriteRenderer;
 
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        collider = GetComponent<CircleCollider2D>();
+        balls = GameObject.FindGameObjectsWithTag("Ball");
         magnets = GameObject.FindGameObjectsWithTag("Magnet");
         TurnButtonRed();
     }
 
+    private void Update()
+    {
+        CheckForTouch();
+    }
+
     void FixedUpdate()
     {
-        if (isActive) activeBall.GetComponent<Rigidbody2D>().MovePosition(Vector3.MoveTowards(activeBall.transform.position, transform.position, this.speed * Time.deltaTime));
+        if (isActive)
+        {
+            foreach (GameObject gameObject in balls)
+            {
+                if (gameObject.GetComponent<Ball>().isGoingIntoSocket) continue;
+
+                gameObject.GetComponent<Rigidbody2D>().MovePosition(Vector3.MoveTowards(gameObject.transform.position, transform.position, this.speed * Time.deltaTime));
+            }
+        }
     }
 
     public void Hit()
@@ -52,20 +64,12 @@ public class Magnet : MonoBehaviour
 
     private void TurnButtonGreen()
     {
-        ColorBlock buttonColors = magnetSwitch.colors;
-        buttonColors.normalColor = new Color32(169, 255, 76, 255);
-        buttonColors.highlightedColor = new Color32(141, 241, 35, 255);
-        buttonColors.selectedColor = new Color32(169, 255, 76, 255);
-        magnetSwitch.colors = buttonColors;
+        spriteRenderer.color = new Color32(169, 255, 76, 255);
     }
 
     private void TurnButtonRed()
     {
-        ColorBlock buttonColors = magnetSwitch.colors;
-        buttonColors.normalColor = new Color32(255, 76, 76, 255);
-        buttonColors.highlightedColor = new Color32(248, 11, 11, 255);
-        buttonColors.selectedColor = new Color32(255, 76, 76, 255);
-        magnetSwitch.colors = buttonColors;
+        spriteRenderer.color = new Color32(255, 76, 76, 255);
     }
 
     private void Deactivate()
@@ -81,6 +85,33 @@ public class Magnet : MonoBehaviour
             if (magnet.GetInstanceID() != gameObject.GetInstanceID())
             {
                 magnet.GetComponent<Magnet>().Deactivate();
+            }
+        }
+    }
+
+    private void CheckForTouch()
+    {
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+
+            var wp = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+            var touchPosition = new Vector2(wp.x, wp.y);
+
+            if (collider == Physics2D.OverlapPoint(touchPosition))
+            {
+                Hit();
+            }
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+
+            var wp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            var touchPosition = new Vector2(wp.x, wp.y);
+
+            if (collider == Physics2D.OverlapPoint(touchPosition))
+            {
+                Hit();
             }
         }
     }
