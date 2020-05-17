@@ -5,10 +5,6 @@ using UnityEngine.UI;
 
 public class Magnet : MonoBehaviour
 {
-    [Header("Magnet Strength")]
-    [SerializeField]
-    public float speed;
-
     private bool isActive;
     private GameObject[] magnets;
     private GameObject[] balls;
@@ -37,7 +33,7 @@ public class Magnet : MonoBehaviour
             {
                 if (gameObject.GetComponent<Ball>().isGoingIntoSocket) continue;
 
-                gameObject.GetComponent<Rigidbody2D>().MovePosition(Vector3.MoveTowards(gameObject.transform.position, transform.position, this.speed * Time.deltaTime));
+                gameObject.GetComponent<Rigidbody2D>().MovePosition(Vector3.MoveTowards(gameObject.transform.position, transform.position, gameObject.GetComponent<Ball>().speed * Time.deltaTime));
             }
         }
     }
@@ -103,16 +99,16 @@ public class Magnet : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonDown(0))
-        {
+        //if (Input.GetMouseButtonDown(0))
+        //{
 
-            var wp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            var touchPosition = new Vector2(wp.x, wp.y);
+        //    var wp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        //    var touchPosition = new Vector2(wp.x, wp.y);
 
-            if (collider == Physics2D.OverlapPoint(touchPosition))
-            {
-                Hit();
-            }
-        }
+        //    if (collider == Physics2D.OverlapPoint(touchPosition))
+        //    {
+        //        Hit();
+        //    }
+        //}
     }
 }

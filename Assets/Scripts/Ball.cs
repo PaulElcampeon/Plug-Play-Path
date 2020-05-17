@@ -11,6 +11,7 @@ public class Ball : MonoBehaviour
     public string colour { get; set; }
     public bool isSocketed { get; set; }
     public bool isGoingIntoSocket { get; set; }
+    public float speed;
     private bool shouldDissapear;
 
     void Start()
