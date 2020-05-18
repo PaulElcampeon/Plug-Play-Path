@@ -1,25 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private GameObject[] magnets;
+    [SerializeField]
+    private GameObject startGameUI;
 
     [SerializeField]
-    private GameObject nineteenByNine;
+    private GameObject inGameMenu;
 
     [SerializeField]
-    private GameObject sixteenByNine;
+    private GameObject retryPanel;
 
     [SerializeField]
-    private GameObject eighteenByNine;
-
-    [SerializeField]
-    private GameObject fiveByThree;
-
-    [SerializeField]
-    private GameObject thirtySevenByEighteen;
+    private GameObject nextPanel;
 
     public static GameManager instance;
 
@@ -36,41 +32,60 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 
-    private void Start()
+    public void OpenInGameMenu()
     {
-        float aspectRatio = Camera.main.aspect;
+        Pause();
 
-        if (aspectRatio == 16f / 9f)
-        {
-            sixteenByNine.SetActive(true);
-            Debug.Log("16by9");
+        inGameMenu.SetActive(true);
+    }
 
-        }
-        else if (aspectRatio == 19f / 9f)
-        {
-            nineteenByNine.SetActive(true);
-            Debug.Log("19by9");
+    public void OpenRetryPanel()
+    {
+        retryPanel.SetActive(true);
+    }
 
-        }
-        else if (aspectRatio == 18f / 9f)
-        {
-            eighteenByNine.SetActive(true);
-            Debug.Log("18by3");
+    public void OpenNextPanel()
+    {
+        nextPanel.SetActive(true);
+    }
 
-        }
-        else if (aspectRatio == 5f / 3f)
-        {
-            fiveByThree.SetActive(true);
-            Debug.Log("5by3");
-        }
-        else if (aspectRatio == 37f / 18f)
-        {
-            thirtySevenByEighteen.SetActive(true);
-            Debug.Log("37by18");
-        }
-        else
-        {
-            sixteenByNine.SetActive(true);
-        }
+    public void Retry()//we do not add to the difficulty level as the player is retrying
+    {
+        GameGenerator.instance.Generate();
+
+        retryPanel.SetActive(false);
+        startGameUI.SetActive(true);
+    }
+
+    public void Next()
+    {
+        //We need to generate the new map then we need to close the next panel and then bring up the StartGame Button
+        GameGenerator.instance.difficulty += 1;
+        GameGenerator.instance.Generate();
+
+        nextPanel.SetActive(false);
+        startGameUI.SetActive(true);
+    }
+
+    public void LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void Pause()
+    {
+        Time.timeScale = 0f;
+    }
+
+    public void UnPause()
+    {
+        Time.timeScale = 1f;
+    }
+
+    public void ExitGame()
+    {
+        Debug.Log("Quiting Game...");
+
+        Application.Quit();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
@@ -34,7 +35,7 @@ public class SoundManager : MonoBehaviour
     private void Start()
     {
         sfxVolume = 0.5f;
-        bgmVolume = 0.05f;
+        bgmVolume = 0.4f;
     }
 
     public void PlaySFX(int sfxIndex)
@@ -59,5 +60,15 @@ public class SoundManager : MonoBehaviour
         {
             if (bgmSounds[i].isPlaying) bgmSounds[i].Stop();
         }
+    }
+
+    public void UpdatetBGMVolume(float volume)
+    {
+        bgmVolume = volume;
+    }
+
+    public void UpdatetSFXVolume(float volume)
+    {
+        sfxVolume = volume;
     }
 }
