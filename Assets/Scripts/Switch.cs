@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Magnet : MonoBehaviour
+public class Switch : MonoBehaviour
 {
     private bool isActive;
     private GameObject[] magnets;
@@ -80,35 +80,42 @@ public class Magnet : MonoBehaviour
         {
             if (magnet.GetInstanceID() != gameObject.GetInstanceID())
             {
-                magnet.GetComponent<Magnet>().Deactivate();
+                magnet.GetComponent<Switch>().Deactivate();
             }
         }
     }
 
     private void CheckForTouch()
     {
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        if (SystemInfo.deviceType == DeviceType.Handheld)
         {
-
-            var wp = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-            var touchPosition = new Vector2(wp.x, wp.y);
-
-            if (collider == Physics2D.OverlapPoint(touchPosition))
+            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             {
-                Hit();
+
+                var wp = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+                var touchPosition = new Vector2(wp.x, wp.y);
+
+                if (collider == Physics2D.OverlapPoint(touchPosition))
+                {
+                    Hit();
+                }
             }
         }
 
-        //if (Input.GetMouseButtonDown(0))
-        //{
+        if (SystemInfo.deviceType == DeviceType.Desktop)
+        {
 
-        //    var wp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //    var touchPosition = new Vector2(wp.x, wp.y);
+            if (Input.GetMouseButtonDown(0))
+            {
 
-        //    if (collider == Physics2D.OverlapPoint(touchPosition))
-        //    {
-        //        Hit();
-        //    }
-        //}
+                var wp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                var touchPosition = new Vector2(wp.x, wp.y);
+
+                if (collider == Physics2D.OverlapPoint(touchPosition))
+                {
+                    Hit();
+                }
+            }
+        }
     }
 }
