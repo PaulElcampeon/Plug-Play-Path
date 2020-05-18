@@ -26,7 +26,8 @@ public class GameManager : MonoBehaviour
             instance = this;
         } else
         {
-            Destroy(this.gameObject);
+            Destroy(instance.gameObject);
+            instance = this;
         }
 
         DontDestroyOnLoad(this);
@@ -35,7 +36,6 @@ public class GameManager : MonoBehaviour
     public void OpenInGameMenu()
     {
         Pause();
-
         inGameMenu.SetActive(true);
     }
 

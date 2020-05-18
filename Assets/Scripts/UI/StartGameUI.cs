@@ -11,7 +11,6 @@ public class StartGameUI : MonoBehaviour
 
     public void StartGame()
     {
-        Debug.Log("Wagwa");
         GameManager.instance.UnPause();
         gameObject.SetActive(false);
     }
