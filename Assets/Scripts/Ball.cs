@@ -4,20 +4,14 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    [Header("Attributes")]
-    [SerializeField]
-    private string givenColour;
-
-    public string colour { get; set; }
+    public int colourNo { get; set; }
     public bool isSocketed { get; set; }
     public bool isGoingIntoSocket { get; set; }
     public float speed;
     private bool shouldDissapear;
 
-    void Start()
-    {
-        colour = givenColour;
-    }
+    [SerializeField]
+    private SpriteRenderer spriteRenderer;
 
     private void Update()
     {
@@ -45,5 +39,10 @@ public class Ball : MonoBehaviour
     private void Disable()
     {
         gameObject.SetActive(false);
+    }
+
+    public void SetColour(Color colour)
+    {
+        spriteRenderer.color = colour;
     }
 }

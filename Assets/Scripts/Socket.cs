@@ -9,12 +9,13 @@ public class Socket : MonoBehaviour
     [SerializeField]
     public float speed;
 
-    [Header("Attributes")]
-    [SerializeField]
-    private string givenColour;
+    public int colourNo { get; set; }
 
     private bool isTriggered;
     private bool isOccupied;
+
+    [SerializeField]
+    private SpriteRenderer spriteRenderer;
 
     private GameObject ball;
 
@@ -26,7 +27,7 @@ public class Socket : MonoBehaviour
         {
             ball.GetComponent<Ball>().Socketed();
 
-            if (givenColour == ball.GetComponent<Ball>().colour)
+            if (colourNo == ball.GetComponent<Ball>().colourNo)
             {
                 isOccupied = true;
             }
@@ -50,10 +51,18 @@ public class Socket : MonoBehaviour
 
         if (!isTriggered && other.gameObject.tag == "Ball")
         {
+            if (other.gameObject.GetComponent<Ball>().isGoingIntoSocket) return;
+
             isTriggered = true;
             ball = other.gameObject;
             ball.GetComponent<Ball>().isGoingIntoSocket = true;
-            if (ball.GetComponent<Ball>().colour != givenColour) ball.GetComponent<CircleCollider2D>().enabled = false;
+
+            if (ball.GetComponent<Ball>().colourNo != colourNo) ball.GetComponent<CircleCollider2D>().enabled = false;
         }
+    }
+
+    public void SetColour(Color colour)
+    {
+        spriteRenderer.color = colour;
     }
 }

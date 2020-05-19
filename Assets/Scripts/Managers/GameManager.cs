@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject nextPanel;
 
+    public int difficulty = 1;
+
     public static GameManager instance;
 
     private void Awake()
@@ -31,6 +33,13 @@ public class GameManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(this);
+    }
+
+    public void SetDifficulty(int level)
+    {
+        difficulty = level;
+
+        GameGenerator.instance.UpdateDifficultyLevel(level);
     }
 
     public void OpenInGameMenu()
@@ -60,7 +69,6 @@ public class GameManager : MonoBehaviour
     public void Next()
     {
         //We need to generate the new map then we need to close the next panel and then bring up the StartGame Button
-        GameGenerator.instance.difficulty += 1;
         GameGenerator.instance.Generate();
 
         nextPanel.SetActive(false);

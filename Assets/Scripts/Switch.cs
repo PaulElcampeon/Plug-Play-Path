@@ -40,13 +40,14 @@ public class Switch : MonoBehaviour
 
     public void Hit()
     {
-
         if (this.isActive)
         {
             this.Deactivate();
         }
         else
         {
+            balls = GameObject.FindGameObjectsWithTag("Ball");
+
             this.Activate();
         }
     }
@@ -68,7 +69,7 @@ public class Switch : MonoBehaviour
         spriteRenderer.color = new Color32(255, 76, 76, 255);
     }
 
-    private void Deactivate()
+    public void Deactivate()
     {
         TurnButtonRed();
         this.isActive = false;
@@ -92,8 +93,8 @@ public class Switch : MonoBehaviour
             if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             {
 
-                var wp = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-                var touchPosition = new Vector2(wp.x, wp.y);
+                Vector3 wp = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+                Vector2 touchPosition = new Vector2(wp.x, wp.y);
 
                 if (collider == Physics2D.OverlapPoint(touchPosition))
                 {
@@ -104,12 +105,10 @@ public class Switch : MonoBehaviour
 
         if (SystemInfo.deviceType == DeviceType.Desktop)
         {
-
             if (Input.GetMouseButtonDown(0))
             {
-
-                var wp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                var touchPosition = new Vector2(wp.x, wp.y);
+                Vector3 wp = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector2 touchPosition = new Vector2(wp.x, wp.y);
 
                 if (collider == Physics2D.OverlapPoint(touchPosition))
                 {
