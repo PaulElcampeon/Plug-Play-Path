@@ -30,12 +30,16 @@ public class Socket : MonoBehaviour
             if (colourNo == ball.GetComponent<Ball>().colourNo)
             {
                 isOccupied = true;
+
+                if (CheckIfAllSocketsAreOccupied()) GameUIManager.instance.OpenNextPanel();
             }
             else
             {
                 isTriggered = false;
 
                 ball.GetComponent<Ball>().Dissapear();
+
+                GameUIManager.instance.OpenRetryPanel();
             }
         }
     }
@@ -64,5 +68,17 @@ public class Socket : MonoBehaviour
     public void SetColour(Color colour)
     {
         spriteRenderer.color = colour;
+    }
+
+    public bool CheckIfAllSocketsAreOccupied()
+    {
+        GameObject[] sockets = GameObject.FindGameObjectsWithTag("Socket");
+
+        foreach (GameObject socket in sockets)
+        {
+            if (!socket.GetComponent<Socket>().isOccupied) return false;
+        }
+
+        return true;
     }
 }

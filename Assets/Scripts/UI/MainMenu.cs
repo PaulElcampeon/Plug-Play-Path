@@ -37,6 +37,7 @@ public class MainMenu : MonoBehaviour
 
     public void LoadGame()
     {
+        GameManager.instance.UnPause();
         GameManager.instance.LoadScene("Game");
     }
 }

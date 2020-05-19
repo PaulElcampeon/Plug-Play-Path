@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 3008039350825876571}
   m_Layer: 0
   m_Name: Socket
-  m_TagString: Untagged
+  m_TagString: Socket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -223,5 +223,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  givenColour: purple
   spriteRenderer: {fileID: 3008039350476563287}

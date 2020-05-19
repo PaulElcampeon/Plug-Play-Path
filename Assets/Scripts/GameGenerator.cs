@@ -57,7 +57,7 @@ public class GameGenerator : MonoBehaviour
 
     public static GameGenerator instance;
 
-    private void Start()
+    void Start()
     {
         //ColoursUsed.Add(0, Color.blue);
         //ColoursUsed.Add(1, Color.magenta);
@@ -66,14 +66,14 @@ public class GameGenerator : MonoBehaviour
         //ColoursUsed.Add(4, Color.cyan);
 
         UpdateDifficultyLevel(GameManager.instance.difficulty);
-        //UpdateDifficultyLevel(3);
+
+        Generate();
     }
 
     public void Generate()
     {
         ClearMap();
         ClearLists();
-
         ResetSwitches();
 
         int noOfBallsToCreate = Random.Range(minBalls, maxBalls + 1);
@@ -142,7 +142,7 @@ public class GameGenerator : MonoBehaviour
         }
     }
 
-    public void ClearLists()
+    private void ClearLists()
     {
         balls.Clear();
         sockets.Clear();

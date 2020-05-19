@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ball
   - Magnet
+  - Socket
   layers:
   - Default
   - TransparentFX

@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7337839739538960148
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7337839739538960138}
+  - component: {fileID: 7337839739538960139}
+  m_Layer: 0
+  m_Name: MapGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7337839739538960138
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7337839739538960148}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7337839739538960139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7337839739538960148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9ca41d15aa664c4c85df2cdb44c53e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  switchButtonReference: {fileID: 1349753439167275393, guid: f8f4c2fe602adef409541fa3eab37364,
+    type: 3}
+  ballReference: {fileID: 9037558288466292068, guid: 0bcf78dc905b8fe42bbcbe8488f133b0,
+    type: 3}
+  socketReference: {fileID: 3008039350825876582, guid: 8005c95669586c54ea5632f20d88f778,
+    type: 3}
+  minXPosBall: -6
+  maxXPosBall: 6
+  minYPosBall: -3.7
+  maxYPosBall: -3.3
+  minDistanceBetweenBalls: 1
+  minXPosSwitch: -4
+  maxXPosSwitch: 4
+  minYPosSwitch: -2.5
+  maxYPosSwitch: 2.6
+  minDistanceBetweenSockets: 2

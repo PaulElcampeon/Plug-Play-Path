@@ -11,7 +11,7 @@ public class Switch : MonoBehaviour
     private CircleCollider2D collider;
     private SpriteRenderer spriteRenderer;
 
-    void Start()
+    private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         collider = GetComponent<CircleCollider2D>();
