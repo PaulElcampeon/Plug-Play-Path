@@ -55,7 +55,7 @@ public class GameUIManager : MonoBehaviour
 
     public IEnumerator OpenRetryPanelCoro()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
 
         GameManager.instance.Pause();
 
@@ -64,7 +64,7 @@ public class GameUIManager : MonoBehaviour
 
     public IEnumerator OpenNextPanelCoro()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
 
         GameManager.instance.Pause();
 
