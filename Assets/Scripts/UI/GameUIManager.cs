@@ -13,6 +13,8 @@ public class GameUIManager : MonoBehaviour
     [SerializeField]
     private GameObject nextPanel;
 
+    private bool isAlreadyOpeningPanel = false;
+
     public static GameUIManager instance;
 
     private void Awake()
@@ -24,6 +26,8 @@ public class GameUIManager : MonoBehaviour
     {
         if (nextPanel.activeInHierarchy || retryPanel.activeInHierarchy) return;
 
+        SoundManager.instance.PlaySFX(2);
+
         GameManager.instance.Pause();
 
         inGameMenu.SetActive(true);
@@ -31,16 +35,30 @@ public class GameUIManager : MonoBehaviour
 
     public void OpenRetryPanel()
     {
+        if (isAlreadyOpeningPanel) return;
+
+        SoundManager.instance.PlaySFX(2);
+
+        isAlreadyOpeningPanel = true;
+
         StartCoroutine(OpenRetryPanelCoro());
     }
 
     public void OpenNextPanel()
     {
+        if (isAlreadyOpeningPanel) return;
+
+        SoundManager.instance.PlaySFX(4);
+
+        isAlreadyOpeningPanel = true;
+
         StartCoroutine(OpenNextPanelCoro());
     }
 
     public void CloseRetryPanel()
     {
+        isAlreadyOpeningPanel = false;
+
         retryPanel.SetActive(false);
 
         GameManager.instance.UnPause();
@@ -48,6 +66,8 @@ public class GameUIManager : MonoBehaviour
 
     public void CloseNextPanel()
     {
+        isAlreadyOpeningPanel = false;
+
         nextPanel.SetActive(false);
 
         GameManager.instance.UnPause();

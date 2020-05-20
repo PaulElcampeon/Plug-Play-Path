@@ -43,7 +43,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 975fbffac085e124e83a15588a2bbd16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sfxSounds: []
-  bgmSounds: []
-  bgmSlider: {fileID: 0}
-  sfxSlider: {fileID: 0}
+  sfxSounds:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  bgmSounds:
+  - {fileID: 0}

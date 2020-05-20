@@ -12,6 +12,8 @@ public class InGameMenu : MonoBehaviour
 
     public void CloseActivePanel()
     {
+        SoundManager.instance.PlaySFX(2);
+
         GameManager.instance.UnPause();
 
         if (soundPanel.activeInHierarchy)
@@ -29,6 +31,8 @@ public class InGameMenu : MonoBehaviour
 
     public void OpenSoundPanel()
     {
+        SoundManager.instance.PlaySFX(1);
+
         GameManager.instance.Pause();
 
         soundPanel.SetActive(true);

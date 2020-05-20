@@ -25,8 +25,6 @@ public class GameManager : MonoBehaviour
     public void SetDifficulty(int level)
     {
         difficulty = level;
-
-        GameGenerator.instance.UpdateDifficultyLevel(level);
     }
 
     public void LoadScene(string sceneName)

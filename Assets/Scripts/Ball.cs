@@ -9,6 +9,8 @@ public class Ball : MonoBehaviour
     public bool isGoingIntoSocket { get; set; }
     public float speed;
     private bool shouldDissapear;
+    private bool canMakeSound = true;
+
 
     [SerializeField]
     private SpriteRenderer spriteRenderer;
@@ -44,5 +46,24 @@ public class Ball : MonoBehaviour
     public void SetColour(Color colour)
     {
         spriteRenderer.color = colour;
+    }
+
+    public void OnCollisionEnter2D(Collision2D other)
+    {
+        if (!canMakeSound) return;
+
+        if (other.gameObject.tag == "Ball" || other.gameObject.tag == "Magnet")
+        {
+            StartCoroutine(ResetSound());
+
+            SoundManager.instance.PlaySFX(0);
+        }
+    }
+
+    private IEnumerator ResetSound()
+    {
+        canMakeSound = false;
+        yield return new WaitForSeconds(1.5f);
+        canMakeSound = true;
     }
 }

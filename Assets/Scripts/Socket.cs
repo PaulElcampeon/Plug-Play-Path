@@ -31,6 +31,8 @@ public class Socket : MonoBehaviour
             {
                 isOccupied = true;
 
+                SoundManager.instance.PlaySFX(6);
+
                 if (CheckIfAllSocketsAreOccupied()) GameUIManager.instance.OpenNextPanel();
             }
             else
@@ -38,6 +40,8 @@ public class Socket : MonoBehaviour
                 isTriggered = false;
 
                 ball.GetComponent<Ball>().Dissapear();
+
+                SoundManager.instance.PlaySFX(5);
 
                 GameUIManager.instance.OpenRetryPanel();
             }

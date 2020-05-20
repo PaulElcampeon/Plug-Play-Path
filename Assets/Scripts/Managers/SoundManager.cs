@@ -35,7 +35,7 @@ public class SoundManager : MonoBehaviour
     private void Start()
     {
         sfxVolume = 0.5f;
-        bgmVolume = 0.4f;
+        bgmVolume = 0.3f;
     }
 
     public void PlaySFX(int sfxIndex)

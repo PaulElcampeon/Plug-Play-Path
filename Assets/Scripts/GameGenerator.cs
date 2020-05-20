@@ -59,6 +59,7 @@ public class GameGenerator : MonoBehaviour
 
     void Start()
     {
+        SoundManager.instance.PlayBGM(0);
         //ColoursUsed.Add(0, Color.blue);
         //ColoursUsed.Add(1, Color.magenta);
         //ColoursUsed.Add(2, Color.yellow);
@@ -92,7 +93,6 @@ public class GameGenerator : MonoBehaviour
             } else
             {
                 color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
-
             }
 
             Vector3 ballPosition = FindAvailablePositionForBall();
@@ -226,6 +226,7 @@ public class GameGenerator : MonoBehaviour
 
     public void UpdateDifficultyLevel(int difficultyLevel)
     {
+        Debug.Log("Difficulty level is now " + difficultyLevel);
 
         if (difficultyLevel == 1)
         {
