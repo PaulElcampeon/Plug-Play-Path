@@ -97,7 +97,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1713052615
 Transform:
   m_ObjectHideFlags: 0
@@ -228,7 +228,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61ea9fe0f995de244b7be330d3f5dd28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  givenColour: purple
   speed: 2.5
   spriteRenderer: {fileID: 1694401372}
 --- !u!58 &9037558288466292064
