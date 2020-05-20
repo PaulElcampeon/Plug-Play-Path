@@ -17,7 +17,7 @@ public class Switch : MonoBehaviour
         collider = GetComponent<CircleCollider2D>();
         balls = GameObject.FindGameObjectsWithTag("Ball");
         magnets = GameObject.FindGameObjectsWithTag("Magnet");
-        TurnButtonRed();
+        TurnButtonWhite();
     }
 
     private void Update()
@@ -55,23 +55,23 @@ public class Switch : MonoBehaviour
     private void Activate()
     {
         DeactivateAllOtherMagnets();
-        TurnButtonGreen();
+        TurnButtonYellow();
         this.isActive = true;
     }
 
-    private void TurnButtonGreen()
+    private void TurnButtonYellow()
     {
-        spriteRenderer.color = new Color32(169, 255, 76, 255);
+        spriteRenderer.color = Color.yellow;
     }
 
-    private void TurnButtonRed()
+    private void TurnButtonWhite()
     {
-        spriteRenderer.color = new Color32(255, 76, 76, 255);
+        spriteRenderer.color = Color.white;
     }
 
     public void Deactivate()
     {
-        TurnButtonRed();
+        TurnButtonWhite();
         this.isActive = false;
     }
 
