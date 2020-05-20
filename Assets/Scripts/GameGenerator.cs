@@ -59,15 +59,13 @@ public class GameGenerator : MonoBehaviour
 
     void Start()
     {
-        //SoundManager.instance.PlayBGM(0);
-
         //ColoursUsed.Add(0, Color.blue);
         //ColoursUsed.Add(1, Color.magenta);
         //ColoursUsed.Add(2, Color.yellow);
         //ColoursUsed.Add(3, Color.red);
         //ColoursUsed.Add(4, Color.cyan);
-        UpdateDifficultyLevel(1);
-        //UpdateDifficultyLevel(GameManager.instance.difficulty);
+        //UpdateDifficultyLevel(1);
+        UpdateDifficultyLevel(GameManager.instance.difficulty);
 
         Generate();
     }
@@ -93,7 +91,7 @@ public class GameGenerator : MonoBehaviour
             {
             } else
             {
-                color = Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f);
+                color = Random.ColorHSV(0f, 0.7f, 0.7f, 1f, 1f, 1f);
             }
 
             Vector3 ballPosition = FindAvailablePositionForBall();
