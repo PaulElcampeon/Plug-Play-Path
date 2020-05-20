@@ -37,8 +37,6 @@ public class GameUIManager : MonoBehaviour
     {
         if (isAlreadyOpeningPanel) return;
 
-        SoundManager.instance.PlaySFX(2);
-
         isAlreadyOpeningPanel = true;
 
         StartCoroutine(OpenRetryPanelCoro());
