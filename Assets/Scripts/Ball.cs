@@ -52,7 +52,7 @@ public class Ball : MonoBehaviour
     {
         if (!canMakeSound) return;
 
-        if (other.gameObject.tag == "Ball" || other.gameObject.tag == "Magnet")
+        if (other.gameObject.tag == "Ball" /*||other.gameObject.tag == "Magnet"*/)
         {
             StartCoroutine(ResetSound());
 
