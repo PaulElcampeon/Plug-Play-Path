@@ -21,7 +21,7 @@ public class Socket : MonoBehaviour
 
     private void Update()
     {
-        if (!isTriggered) return;
+        if (!isTriggered || isOccupied) return;
 
         if (Vector2.Distance(ball.transform.position, transform.position) < 0.01)
         {
