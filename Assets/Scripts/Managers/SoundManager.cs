@@ -35,7 +35,9 @@ public class SoundManager : MonoBehaviour
     private void Start()
     {
         sfxVolume = 0.5f;
-        bgmVolume = 0.3f;
+        bgmVolume = 0.4f;
+
+        SoundManager.instance.PlayBGM(0);
     }
 
     public void PlaySFX(int sfxIndex)
@@ -62,9 +64,19 @@ public class SoundManager : MonoBehaviour
         }
     }
 
+    private void UpdateBGMThatMayBePlaying()
+    {
+        for (int i = 0; i < bgmSounds.Length; i++)
+        {
+            if (bgmSounds[i].isPlaying) bgmSounds[i].volume = bgmVolume;
+        }
+    }
+
     public void UpdatetBGMVolume(float volume)
     {
         bgmVolume = volume;
+
+        UpdateBGMThatMayBePlaying();
     }
 
     public void UpdatetSFXVolume(float volume)
