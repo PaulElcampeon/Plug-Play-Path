@@ -59,14 +59,15 @@ public class GameGenerator : MonoBehaviour
 
     void Start()
     {
-        SoundManager.instance.PlayBGM(0);
+        //SoundManager.instance.PlayBGM(0);
+
         //ColoursUsed.Add(0, Color.blue);
         //ColoursUsed.Add(1, Color.magenta);
         //ColoursUsed.Add(2, Color.yellow);
         //ColoursUsed.Add(3, Color.red);
         //ColoursUsed.Add(4, Color.cyan);
-
-        UpdateDifficultyLevel(GameManager.instance.difficulty);
+        UpdateDifficultyLevel(1);
+        //UpdateDifficultyLevel(GameManager.instance.difficulty);
 
         Generate();
     }
@@ -226,8 +227,6 @@ public class GameGenerator : MonoBehaviour
 
     public void UpdateDifficultyLevel(int difficultyLevel)
     {
-        Debug.Log("Difficulty level is now " + difficultyLevel);
-
         if (difficultyLevel == 1)
         {
             minBalls = 2;

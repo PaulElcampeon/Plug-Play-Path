@@ -48,3 +48,5 @@ MonoBehaviour:
   eighteenByNine: {fileID: 0}
   fiveByThree: {fileID: 0}
   thirtySevenByEighteen: {fileID: 0}
+  westSwtiches: {fileID: 0}
+  eastSwtiches: {fileID: 0}
