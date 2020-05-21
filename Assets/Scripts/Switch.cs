@@ -10,6 +10,14 @@ public class Switch : MonoBehaviour
     private GameObject[] balls;
     private CircleCollider2D collider;
     private SpriteRenderer spriteRenderer;
+    private bool canShatter = true;
+
+    [SerializeField]
+    private GameObject shatterYellow;
+
+    [SerializeField]
+    private GameObject shatterWhite;
+
 
     private void Awake()
     {
@@ -77,13 +85,45 @@ public class Switch : MonoBehaviour
 
     private void DeactivateAllOtherMagnets()
     {
-        foreach(GameObject magnet in magnets)
+        foreach (GameObject magnet in magnets)
         {
             if (magnet.GetInstanceID() != gameObject.GetInstanceID())
             {
                 magnet.GetComponent<Switch>().Deactivate();
             }
         }
+    }
+
+    private void Shatter()
+    {
+        if (isActive)
+        {
+            Instantiate(shatterYellow, transform.position, Quaternion.identity);
+        } else
+        {
+            Instantiate(shatterWhite, transform.position, Quaternion.identity);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Ball")
+        {
+          
+            //SoundManager.instance.PlaySFX(4);
+
+            if (!canShatter) return;
+
+            Shatter();
+            StartCoroutine(ResetShatter());
+        }
+    }
+
+    private IEnumerator ResetShatter()
+    {
+        canShatter = false;
+        yield return new WaitForSeconds(2f);
+        canShatter = true;
     }
 
     private void CheckForTouch()

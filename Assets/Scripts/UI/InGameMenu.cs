@@ -40,8 +40,6 @@ public class InGameMenu : MonoBehaviour
 
     public void Close()
     {
-        SoundManager.instance.StopCurrentBGM();
-
         GameManager.instance.LoadScene("Menu");
     }
 }

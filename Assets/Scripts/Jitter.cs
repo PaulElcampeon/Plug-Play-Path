@@ -23,7 +23,6 @@ public class Jitter : MonoBehaviour
         AssignTargetPositon();
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);

@@ -48,22 +48,22 @@ public class Ball : MonoBehaviour
         spriteRenderer.color = colour;
     }
 
-    public void OnCollisionEnter2D(Collision2D other)
-    {
-        if (!canMakeSound) return;
+    //public void OnCollisionEnter2D(Collision2D other)
+    //{
+    //    if (!canMakeSound) return;
 
-        if (other.gameObject.tag == "Ball" /*||other.gameObject.tag == "Magnet"*/)
-        {
-            StartCoroutine(ResetSound());
+    //    if (other.gameObject.tag == "Ball" /*||other.gameObject.tag == "Magnet"*/)
+    //    {
+    //        StartCoroutine(ResetSound());
 
-            SoundManager.instance.PlaySFX(0);
-        }
-    }
+    //        SoundManager.instance.PlaySFX(0);
+    //    }
+    //}
 
-    private IEnumerator ResetSound()
-    {
-        canMakeSound = false;
-        yield return new WaitForSeconds(1.5f);
-        canMakeSound = true;
-    }
+    //private IEnumerator ResetSound()
+    //{
+    //    canMakeSound = false;
+    //    yield return new WaitForSeconds(1f);
+    //    canMakeSound = true;
+    //}
 }

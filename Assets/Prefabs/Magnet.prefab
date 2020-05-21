@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5493420528409706119}
   - component: {fileID: 5493420528409706116}
   - component: {fileID: 5493420528409706117}
+  - component: {fileID: 508986633}
   m_Layer: 0
   m_Name: Magnet
   m_TagString: Magnet
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5493420528409706114}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.85, y: -0.5946478, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -72,7 +73,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2d5b25bb5df923b4899a1ea30869ff2b, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -94,6 +95,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d02987e61aef5541bc596b11d446b3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shatterYellow: {fileID: 1978541797805219358, guid: f5073fb1e69ccd045bc198a34cd8c150,
+    type: 3}
+  shatterWhite: {fileID: 5831422974853623731, guid: 575d5a30430aa66459ef0c04dba06742,
+    type: 3}
 --- !u!58 &5493420528409706117
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -110,3 +115,18 @@ CircleCollider2D:
   m_Offset: {x: 0.09045267, y: -0.030151367}
   serializedVersion: 2
   m_Radius: 4.418488
+--- !u!114 &508986633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5493420528409706114}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c5eff31f843b4449a11efcb2063569e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAgameObject: 1
+  speed: 0.06
+  minDistanceBetweenPoints: 0.01

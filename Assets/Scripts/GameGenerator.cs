@@ -46,8 +46,6 @@ public class GameGenerator : MonoBehaviour
     private List<GameObject> balls = new List<GameObject>();
     private List<GameObject> sockets = new List<GameObject>();
 
-    //Dictionary<int, Color> ColoursUsed = new Dictionary<int, Color>();
-
     private int minBalls;
     private int maxBalls;
     private int minSockets;
@@ -59,12 +57,6 @@ public class GameGenerator : MonoBehaviour
 
     void Start()
     {
-        //ColoursUsed.Add(0, Color.blue);
-        //ColoursUsed.Add(1, Color.magenta);
-        //ColoursUsed.Add(2, Color.yellow);
-        //ColoursUsed.Add(3, Color.red);
-        //ColoursUsed.Add(4, Color.cyan);
-        //UpdateDifficultyLevel(1);
         UpdateDifficultyLevel(GameManager.instance.difficulty);
 
         Generate();
@@ -97,11 +89,6 @@ public class GameGenerator : MonoBehaviour
             Vector3 ballPosition = FindAvailablePositionForBall();
 
             GameObject ball = Instantiate(ballReference, ballPosition, Quaternion.identity);
-
-            //Color color;
-            //if (ColoursUsed.TryGetValue(i, out color))
-            //{
-            //}
 
             ball.GetComponent<Ball>().SetColour(color);
 
