@@ -34,8 +34,8 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        sfxVolume = 0.5f;
-        bgmVolume = 0.4f;
+        sfxVolume = 0.2f;
+        bgmVolume = 0.15f;
 
         PlayBGM(0);
     }
