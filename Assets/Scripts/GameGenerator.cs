@@ -223,20 +223,20 @@ public class GameGenerator : MonoBehaviour
 
         } else if (difficultyLevel == 2)
         {
-            minBalls = 2;
+            minBalls = 3;
             maxBalls = 4;
-            minSockets = 2;
+            minSockets = 3;
             maxSockets = 4;
-            minSpeed = 1f;
+            minSpeed = 2f;
             maxSpeed = 9f;
 
         } else
         {
-            minBalls = 3;
+            minBalls = 4;
             maxBalls = 5;
-            minSockets = 3;
+            minSockets = 4;
             maxSockets = 5;
-            minSpeed = 1f;
+            minSpeed = 3f;
             maxSpeed = 12f;
         }
     }
